@@ -87,7 +87,7 @@ fig = plt.figure()
 
 nx.draw(grid2,pos= {x:x for x in grid2.nodes()},node_color=[slist[cdict[x]] for x in grid2.nodes()],cmap=plt.cm.jet,node_shape='s',node_size=ns,kwds = {'zorder':1})    
 
-nx.draw(grid,pos= {x:(np.mean(reverse_cdict[cdict[x]][0]),np.mean(reverse_cdict[cdict[x]][1])) for x in grid.nodes()},label=True,node_color=['w' for x in grid2.nodes()],node_size=25,kwds = {'zorder':100})
+nx.draw(grid,pos= {x:(np.mean(reverse_cdict[cdict[x]][0]),np.mean(reverse_cdict[cdict[x]][1])) for x in grid.nodes()},label=True,node_color=['w' for x in grid.nodes()],node_size=25,kwds = {'zorder':100})
 
 #nx.draw_networkx_edges(grid,pos= {x:(np.mean(reverse_cdict[cdict[x]][0]),np.mean(reverse_cdict[cdict[x]][1])) for x in grid.nodes()},kwds = {'zorder':100},width=10)
 

@@ -6,12 +6,19 @@ from sklearn.cluster import SpectralClustering
 from sklearn import metrics
 from networkx.algorithms.community import greedy_modularity_communities
 from networkx.algorithms.community import label_propagation_communities
+from gerrychain import Graph
 
+import geopandas as gpd
 
 G = nx.karate_club_graph()
 n=34
-#G = nx.grid_graph([5,5])
-#n=25
+G = nx.grid_graph([5,5])
+n=25
+
+G=Graph.from_json("./County05.json")
+n=len(list(G.nodes()))
+df = gpd.read_file("./County05.shp")
+
 AM = nx.adjacency_matrix(G)
 NLM = (nx.normalized_laplacian_matrix(G)).todense()
 LM = (nx.laplacian_matrix(G)).todense()
@@ -48,6 +55,13 @@ plt.show()
 plt.figure()
 plt.title("Binarized Laplacian Eigenvalues")
 nx.draw(G, node_color=[xFv[x] > 0 for x in range(n)] )
+plt.show()
+
+cvals = [xFv[x] > 0 for x in range(n)]
+cddict = {node:cvals[node] for node in G.nodes()}
+
+df["clusters"]=df.index.map(cddict)
+df.plot(column="clusters")
 plt.show()
 
 plt.figure()

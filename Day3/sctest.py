@@ -4,11 +4,14 @@ from numpy import linalg as LA
 import matplotlib.pyplot as plt
 from sklearn.cluster import SpectralClustering
 from sklearn import metrics
+from networkx.algorithms.community import greedy_modularity_communities
+from networkx.algorithms.community import label_propagation_communities
+
 
 G = nx.karate_club_graph()
 n=34
-G = nx.grid_graph([5,5])
-n=25
+#G = nx.grid_graph([5,5])
+#n=25
 AM = nx.adjacency_matrix(G)
 NLM = (nx.normalized_laplacian_matrix(G)).todense()
 LM = (nx.laplacian_matrix(G)).todense()
@@ -64,8 +67,42 @@ plt.show()
 
 
 
+c = list(greedy_modularity_communities(G))
 
 
+ncs = [0 for x in G.nodes()]
+
+nlist = list(G.nodes())
+
+for i in range(len(c)):
+    for j in range(len(nlist)):
+        if nlist[j] in c[i]:
+            ncs[j]=i
+            
+         
+plt.figure()
+plt.title("Modularity")
+nx.draw(G,node_color= ncs)
+plt.show()       
+
+
+c = list(label_propagation_communities(G))
+
+
+ncs = [0 for x in G.nodes()]
+
+nlist = list(G.nodes())
+
+for i in range(len(c)):
+    for j in range(len(nlist)):
+        if nlist[j] in c[i]:
+            ncs[j]=i
+            
+         
+plt.figure()
+plt.title("Label Propogation")
+nx.draw(G,node_color= ncs)
+plt.show()  
 
 
 

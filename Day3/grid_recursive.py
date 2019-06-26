@@ -14,7 +14,7 @@ from new_seeds_recursive import *
 
 n = 20#grid size
 m = 20#grid size
-k = 10# number of colors
+k = 2# number of colors
 
 
 grid = nx.grid_graph([n,m])
@@ -40,11 +40,10 @@ def recursive_bi_part(graph, parts, pop_col, epsilon,node_repeats=20,):
         #update = minflow_part(sgraph, pop_col, pop_target, epsilon)
         #update = minflow_part1(sgraph, pop_col, pop_target, epsilon)
         #update =  edge_removal_part(sgraph, pop_col, pop_target, epsilon)#inefficient
-        update = part2path2(sgraph, pop_col, pop_target, epsilon)
-        #update = part2path3(sgraph, pop_col, pop_target, epsilon)
+        #update = part2path2(sgraph, pop_col, pop_target, epsilon)
         #update = part2path(sgraph, pop_col, pop_target, epsilon)
         #update = part2snake(sgraph, pop_col, pop_target, epsilon)
-        #update = part2blob(sgraph, pop_col, pop_target, epsilon)
+        update = part2blob(sgraph, pop_col, pop_target, epsilon)
         #update = hier_part(sgraph, pop_col, pop_target, epsilon)
         for x in list(update[1]):
             newlabels[x]=i

@@ -6,8 +6,6 @@ Created on Wed Jun 26 22:50:03 2019
 """
 
 import networkx as nx
-import matplotlib
-#matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import random
 import numpy as np

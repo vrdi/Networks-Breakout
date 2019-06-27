@@ -36,7 +36,7 @@ if shape:
 initial_infection = 2
 spontaneous = 0.01
 recover = .05
-spread = .2
+spread = .05
 reinfect = False
 
 S={n for n in nlist}
@@ -173,6 +173,8 @@ plt.xlabel("Time Step")
 plt.legend()
 plt.show()
 
+
+#ffmpeg -i step%03d.png output.gif
         
         
 

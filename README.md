@@ -5,12 +5,12 @@ Examples and documentation for the week 2 Networks group
 
 <table>
   <tr><td>
-![Epidemic Spreading](https://github.com/vrdi/Networks-Breakout/blob/master/Day4/SIRplots/output.gif)
+<img src="https://github.com/vrdi/Networks-Breakout/blob/master/Day4/SIRplots/output.gif" width=200>
     </td><td>
-![Epidemic Spreading](https://github.com/vrdi/Networks-Breakout/blob/master/Day4/SIRplots/output2.gif)
+<img src="https://github.com/vrdi/Networks-Breakout/blob/master/Day4/SIRplots/output2.gif" width=200>
     </td></tr>
     <tr><td>
-![Epidemic Spreading](https://github.com/vrdi/Networks-Breakout/blob/master/Day4/SIRplots/proportions.png)
+<img src="https://github.com/vrdi/Networks-Breakout/blob/master/Day4/SIRplots/proportions.png" width=200>
     </td><td>
-![Epidemic Spreading](https://github.com/vrdi/Networks-Breakout/blob/master/Day4/SIRplots/proportions2.png)
+<img src="https://github.com/vrdi/Networks-Breakout/blob/master/Day4/SIRplots/proportions2.png" width=200>
       </td></tr>

@@ -6,6 +6,7 @@ Created on Thu Jun 27 00:11:40 2019
 """
 
 import networkx as nx
+import matplotlib
 import matplotlib.pyplot as plt
 import random
 import numpy as np
@@ -43,7 +44,9 @@ k = 4
 for n in nlist:
     g.node[n]["cddict"] = random.choice(range(k))
     
-    
+ 
+plots = [[] for x in range(k)]    
+
 for step in range(num_steps):
     new_assignment = {x:-1 for x in g.nodes()}
     
@@ -52,6 +55,7 @@ for step in range(num_steps):
         for n in nlist:
             nassn = [g.node[neighbor]["cddict"] for neighbor in g.neighbors(n)]
             ncount = Counter(nassn)
+        
             nmax = max(ncount.values())
             nchoose = []
             for j in range(k):
@@ -74,7 +78,12 @@ for step in range(num_steps):
             
             new_assignment[n] = random.choice(nchoose)
         
-        
+    allcount = Counter(list(new_assignment.values()))   
+    for j in range(k):
+        if j in allcount.keys():
+            plots[j].append(allcount[j])
+        else:
+            plots[j].append(0)
     if new_assignment == {n:g.node[x]["cddict"] for x in nlist}:
         print("Converged")
         break
@@ -92,7 +101,20 @@ for step in range(num_steps):
         plt.savefig(f"./BPplots/dfstep{step:03d}.png")
         plt.close()
     
+    
+cmap = matplotlib.cm.get_cmap('tab20')
 
-        
+plt.figure()
+for i in range(k):
+    plt.plot([x/n for x in plots[i]],color = cmap(i),label=str(i))  
+plt.legend()
+plt.savefig(f"./BPplots/dfstep{step:03d}.png")
+plt.close()
+
+plt.figure()
+for i in range(k):
+    plt.plot([x/n for x in plots[i]],color = cmap(i),label=str(i))  
+plt.legend()
+plt.show()
     
 
